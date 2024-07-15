@@ -5,12 +5,12 @@ Welcome to the official GitHub repository for the Somerset NHS Foundation Trust 
 This repo aims to describe the algorithm used as part of the matching process within the SomersetFT’s WMPI solution.
 
 ## Table of Contents
-* [Background](#background)
-* [Matching Algorithm](#matching-algorithm)
-	* [Algorithm Description](#algorithm-description)
-	* [Indirect Matches](#indirect-matches)
-	* [Flow-Diagrams](#flow-diagrams)
-	*  [Examples](#examples)
+* [Background](#Background)
+* [Matching Algorithm](#Matching-Algorithm)
+	* [Algorithm Description](#Algorithm-Description)
+	* [Indirect Matches](#Indirect-Matches)
+	* [Flow Diagrams](#Flow-Diagrams)
+	*  [Examples](#Examples)
 *  [License](#license)
 *  [Acknowledgments](#acknowledgments)
  
@@ -56,7 +56,7 @@ Each patient record is joined into the full patient dataset using the above comb
 - c - multiple match
 - e - match without DOB (optional)
 
-Then, for each patient record, the matching records and match types are aggregated to give a complete set of matching records. _Indirect matches_ (see [indirect matches](#indirect-matches) are then identified and added into the matching record set. 
+Then, for each patient record, the matching records and match types are aggregated to give a complete set of matching records. _Indirect matches_ (see [indirect matches](#Indirect-Matches) are then identified and added into the matching record set. 
 
 Finally, from this we are able to generate a high level matching status for each patient record with each matching system. We categorise these into:
 
