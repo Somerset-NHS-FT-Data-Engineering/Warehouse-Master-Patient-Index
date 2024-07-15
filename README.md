@@ -53,7 +53,7 @@ These data items are combined in 7 different combinations and each given a numbe
 
 Each patient record is joined into the full patient dataset using the above combinations in turn. Any resulting matched records are stored, along with the coded numerical _match type_. In some instances an **a** or **e** is also used as part of the match type to imply a further match on date of birth is present.
 
-Then, for each patient record, the matching records and match types are aggregated to give a complete set of matching records. _Indirect matches_ (see [indirect matches](#indirect-matches) are then identified and added into the matching record set. 
+Then, for each patient record, the matching records and match types are aggregated to give a complete set of matching records. _Indirect matches_ (see [indirect matches](#indirect-matches)) are then identified and added into the matching record set. 
 
 Finally, from this we are able to generate a high level matching status for each patient record with each matching system. We categorise these into:
 
