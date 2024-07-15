@@ -4,6 +4,16 @@ Welcome to the official GitHub repository for the Somerset NHS Foundation Trust 
 
 This repo aims to describe the algorithm used as part of the matching process within the SomersetFT’s WMPI solution.
 
+## Table of Contents
+* [Background](#background)
+* [Matching Algorithm](#matching-algorithm)
+	* [Algorithm Description](#algorithm-description)
+	* [Indirect Matches](#indirect-matches)
+	* [Flow-Diagrams](#flow-diagrams)
+	*  [Examples](#examples)
+*  [License](#license)
+*  [Acknowledgments](#acknowledgments)
+ 
 ## Background
 The Trust has many clinical systems, most of which hold their own, independent patient datasets. These can be structured very differently depending on how the application works but all store the same basic demographic information. 
 
@@ -46,7 +56,7 @@ Each patient record is joined into the full patient dataset using the above comb
 - c - multiple match
 - e - match without DOB (optional)
 
-Then, for each patient record, the matching records and match types are aggregated to give a complete set of matching records. _Indirect matches_ (see indirect matches) are then identified and added into the matching record set. 
+Then, for each patient record, the matching records and match types are aggregated to give a complete set of matching records. _Indirect matches_ (see [indirect matches](#indirect-matches) are then identified and added into the matching record set. 
 
 Finally, from this we are able to generate a high level matching status for each patient record with each matching system. We categorise these into:
 
@@ -54,6 +64,12 @@ Finally, from this we are able to generate a high level matching status for each
 - **1:1 unconfident match** (1 matching record with any match type other than that in a 1:1  confident match)
 - **multiple match** (>1 matching record with any match type other than a 3a)
 - **no match** (no matching records returned)
+
+### Indirect Matches
+
+### Flow Diagrams
+
+### Examples
 
 ## License
 
