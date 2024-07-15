@@ -1,3 +1,4 @@
+
 # Warehouse-Master-Patient-Index
 
 Welcome to the official GitHub repository for the Somerset NHS Foundation Trust Warehouse Master Patient Index (WMPI).
@@ -5,12 +6,12 @@ Welcome to the official GitHub repository for the Somerset NHS Foundation Trust 
 This repo aims to describe the algorithm used as part of the matching process within the SomersetFT’s WMPI solution.
 
 ## Table of Contents
-* [Background](#Background)
-* [Matching Algorithm](#Matching-Algorithm)
-	* [Algorithm Description](#Algorithm-Description)
-	* [Indirect Matches](#Indirect-Matches)
-	* [Flow Diagrams](#Flow-Diagrams)
-	*  [Examples](#Examples)
+* [Background](#background)
+* [Matching Algorithm](#matching-algorithm)
+	* [Algorithm Description](#algorithm-description)
+	* [Indirect Matches](#indirect-matches)
+	* [Flow Diagrams](#flow-diagrams)
+	*  [Examples](#examples)
 *  [License](#license)
 *  [Acknowledgments](#acknowledgments)
  
@@ -46,28 +47,26 @@ These data items are combined in 7 different combinations and each given a numbe
 - 4 - First name, Surname, Date of birth, Gender, Postcode
 - 5 - First name, Surname, Date of birth, Gender
 - 6 - Surname, Date of birth, Gender, Postcode
-- 7 - First name (punctuation + spaces removed), Surname ( punctuation + spaces removed), Date of birth, Gender, Postcode
+- 7 - First name (punctuation + spaces removed), Surname (punctuation + spaces removed), Date of birth, Gender, Postcode
 - 8 - Exact Soundex match on First name, Exact Soundex match on Surname, Date of birth, Gender, Postcode
 
-Each patient record is joined into the full patient dataset using the above combinations in turn. Any resulting matched records are stored, along with a coded _match type_, where:
+Each patient record is joined into the full patient dataset using the above combinations in turn. Any resulting matched records are stored, along with the coded numerical _match type_. In some instances an **a** or **e** is also used as part of the match type to imply a further match on date of birth is present.
 
-- a - single match
-- b - no match
-- c - multiple match
-- e - match without DOB (optional)
-
-Then, for each patient record, the matching records and match types are aggregated to give a complete set of matching records. _Indirect matches_ (see [indirect matches](#Indirect-Matches) are then identified and added into the matching record set. 
+Then, for each patient record, the matching records and match types are aggregated to give a complete set of matching records. _Indirect matches_ (see [indirect matches](#indirect-matches) are then identified and added into the matching record set. 
 
 Finally, from this we are able to generate a high level matching status for each patient record with each matching system. We categorise these into:
 
-- **1:1 confident match** (1 matching record with 2a or 4a or 7a. Alternatively at least one matching record with 3a)
+- **1:1 confident match** (1 matching record with 2a or 4 or 7. Alternatively at least one matching record with 3a)
 - **1:1 unconfident match** (1 matching record with any match type other than that in a 1:1  confident match)
 - **multiple match** (>1 matching record with any match type other than a 3a)
 - **no match** (no matching records returned)
 
+In addition, duplicate records within a single system are identified where any matches are returned from the same source system.
+
 ### Indirect Matches
 
 ### Flow Diagrams
+A visual representation of the matching algorithm can be found [here](/WMPIAlgorithm.pdf).
 
 ### Examples
 
