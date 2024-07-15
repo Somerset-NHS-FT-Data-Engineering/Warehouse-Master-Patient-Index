@@ -66,7 +66,7 @@ In addition, duplicate records within a single system are identified where any m
 ### Indirect Matches
 
 ### Flow Diagrams
-A visual representation of the matching algorithm can be found [here](/WMPIAlgorithm.pdf).
+A visual representation of the matching algorithm can be found [here](/WMPIAlgorithm_v308.pdf).
 
 ### Examples
 
