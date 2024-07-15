@@ -1,4 +1,5 @@
 
+
 # Warehouse-Master-Patient-Index
 
 Welcome to the official GitHub repository for the Somerset NHS Foundation Trust Warehouse Master Patient Index (WMPI).
@@ -48,7 +49,7 @@ These data items are combined in 7 different combinations and each given a numbe
 - 5 - First name, Surname, Date of birth, Gender
 - 6 - Surname, Date of birth, Gender, Postcode
 - 7 - First name (punctuation + spaces removed), Surname (punctuation + spaces removed), Date of birth, Gender, Postcode
-- 8 - Exact Soundex match on First name, Exact Soundex match on Surname, Date of birth, Gender, Postcode
+- 8 -  First name Soundex, Surname Soundex, Date of birth, Gender, Postcode
 
 Each patient record is joined into the full patient dataset using the above combinations in turn. Any resulting matched records are stored, along with the coded numerical _match type_. In some instances an **a** or **e** is also used as part of the match type to imply a further match on date of birth is present.
 
