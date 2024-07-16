@@ -1,5 +1,6 @@
 
 
+
 # Warehouse-Master-Patient-Index
 
 Welcome to the official GitHub repository for the Somerset NHS Foundation Trust Warehouse Master Patient Index (WMPI).
@@ -12,9 +13,16 @@ This repo aims to describe the algorithm used as part of the matching process wi
 	* [Algorithm Description](#algorithm-description)
 	* [Indirect Matches](#indirect-matches)
 	* [Flow Diagrams](#flow-diagrams)
-	*  [Examples](#examples)
-*  [License](#license)
-*  [Acknowledgments](#acknowledgments)
+	* [Examples](#examples)
+		* [No Match](#no-match)
+		* [1:1 Confident Match](#confident-match)
+		* [1:1 Unconfident Match](#unconfident-match)
+		* [Multiple Match](#multiple-match)
+		* [Indirect Match](#indirect-match)
+	* [DBS Validation](#dbs-validation)
+* [Table Structures](#table-structures)
+* [License](#license)
+* [Acknowledgments](#acknowledgments)
  
 ## Background
 The Trust has many clinical systems, most of which hold their own, independent patient datasets. These can be structured very differently depending on how the application works but all store the same basic demographic information. 
@@ -90,6 +98,52 @@ This means that, through the algorithm alone, record 1 and record 3 are not pick
 A visual representation of the matching algorithm can be found [here](/WMPIAlgorithm_v308.pdf).
 
 ### Examples
+The following examples use fictional patient data to demonstrate how the matching algorithm works in each given matching scenario. For demonstration purposes, the number of systems shown are limited but the principle remains the same, regardless of the number of systems matched.
+
+#### No Match
+#### Confident Match
+#### Unconfident Match
+#### Multiple Match
+#### Indirect Match
+
+
+### DBS Validation
+The [Demographics Batch Service](https://digital.nhs.uk/developer/api-catalogue/demographics-batch-service) provided by NHS Digital is used to validate a subsection matches identified through the matching algorithm. 
+
+The demographic data items for records involved in either an **unconfident** or **multiple** match are submitted to the Spine for tracing against the [Personal Demographics Service (PDS)](https://digital.nhs.uk/services/personal-demographics-service).
+
+Where a trace is successfully returned for both records in a match, the returned NHS Numbers are compared and, where they are not equal, the match is _"undone"_ as they are considered different patients. Where the returned NHS Numbers are the same, the match is considered confirmed.
+
+Should at least one record in the matching pair return an unsuccessful trace then we have no additional information to either confirm or deny the match, so the algorithm outputs remain. The untraced records are sent for data quality review. 
+
+## Table Structures
+The below gives an example of the input (load), core and output table structures used in the SomersetFT WMPI solution. A accompanying data dictionary is also given for each table.
+#### Input (load)
+These are the data items sourced directly from the source system.
+
+**[load].[Demographics]**
+|Column Name|Description|
+|--|--|
+|[NativeSystem]|Local lookup ID for the native system in which the patient record belongs.|
+|[SystemIdentifer]|Local patient ID from the source system.|
+|[NHSNumber]|Demographic data item from the source system.|
+|[Surname]|Demographic data item from the source system.|
+|[Firstname]|Demographic data item from the source system.|
+|[DateOfBirth]|Demographic data item from the source system.|
+|[Gender]|Demographic data item from the source system.|
+|[Postcode]|Demographic data item from the source system.|
+
+**[load].[AlternativeSystemID]**
+|Column Name|Description|
+|--|--|
+|[NativeSystem]|ID for the native system in which the patient record belongs. Referenced in ref.System|
+|[SystemIdentifier]|Local Patient ID within the NativeSystem|
+|[AlternativeNativeSystem]|ID for the native system in which the AlternativeSystemID belongs. Referenced in ref.System|
+|[AlternativeSystemIdentifier]|Alternative Local Patient ID within the AlternativeNativeSystem|
+
+#### Core
+
+#### Output
 
 ## License
 
