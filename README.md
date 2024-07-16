@@ -79,12 +79,12 @@ Would match, through the algorithm (_2e_ match), to patient record 2:
 |--|--|--|--|--|--|--|
 |2|1111111111|John|Doe|02-01-2000|1|ZZ1 1AA|
 
-However, patient record 3, only matches to record 2, through the algorithm (_4,5,6,7,8_ match), but not to record 1:
+However, patient record 3 matches to record 2 through the algorithm (_4,5,6,7,8_ match), but not to record 1:
 |PatientID|NHSNumber|First name|Surname|Date of Birth|Gender|Postcode|
 |--|--|--|--|--|--|--|
 |3|NULL|John|Doe|02-01-2000|1|ZZ1 1AA|
 
-This means that, through the algorithm alone, record 1 and record 3 are not picked up as a match. To get around this, a process is run to identify these and create a new, indirect (_INDRT_) match between these two records.
+This means that, through the algorithm alone, record 1 and record 3 are not picked up as a match. To get around this, a process is run to identify these and create a new, indirect (_INDRT_) match between these two records. This is considered an unconfident match.
 
 ### Flow Diagrams
 A visual representation of the matching algorithm can be found [here](/WMPIAlgorithm_v308.pdf).
