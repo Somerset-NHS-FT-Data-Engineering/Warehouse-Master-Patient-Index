@@ -121,6 +121,8 @@ The below gives an example of the input (load), core and output table structures
 #### Input (load)
 These are the data items sourced directly from the source system.
 
+![Input ER Diagram](WMPI_ER_Diagram_Input.png)
+
 **[load].[Demographics]**
 |Column Name|Description|
 |--|--|
