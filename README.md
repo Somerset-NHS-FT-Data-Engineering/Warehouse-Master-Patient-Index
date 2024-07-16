@@ -68,6 +68,7 @@ In addition, duplicate records within a single system are identified where any m
 Indirect matches occur when two patient records are not directly matched through the algorithm but are related through a match to another common record.
 
 For example:
+
 Patient record 1:
 |PatientID|NHSNumber|First name|Surname|Date of Birth|Gender|Postcode|
 |--|--|--|--|--|--|--|
