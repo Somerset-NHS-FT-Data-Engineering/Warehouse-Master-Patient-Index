@@ -1,6 +1,7 @@
 
 
 
+
 # Warehouse-Master-Patient-Index
 
 Welcome to the official GitHub repository for the Somerset NHS Foundation Trust Warehouse Master Patient Index (WMPI).
@@ -101,10 +102,15 @@ A visual representation of the matching algorithm can be found [here](/WMPIAlgor
 The following examples use fictional patient data to demonstrate how the matching algorithm works in each given matching scenario. For demonstration purposes, the number of systems shown are limited but the principle remains the same, regardless of the number of systems matched.
 
 #### No Match
+To follow
 #### Confident Match
+To follow
 #### Unconfident Match
+To follow
 #### Multiple Match
+To follow
 #### Indirect Match
+To follow
 
 
 ### DBS Validation
@@ -144,6 +150,46 @@ These are the data items sourced directly from the source system.
 |[AlternativeSystemIdentifier]|Alternative Local Patient ID within the AlternativeNativeSystem|
 
 #### Core
+These are the core WMPI tables that act as the single repository of patient records.
+
+![Core ER Diagram](WMPI_ER_Diagram_Core.png)
+
+**[core].[WMPI]**
+|Column Name|Description|
+|--|--|
+|[AssignedKeyID]|Patient record’s unique ID within the WMPI. Assigned on first load|
+|[BusinessKeyID]|For a group of 1:1 confident matching records, this will be the lowest AssignedKeyID in the group.|
+|[MatchKeyID]|For a group of matching records (regardless of the match type), this will be the lowest AssignedKeyID in the group.|
+|[NativeSystem]|Local lookup ID for the native system in which the patient record belongs|
+|[NHSNumber]|Demographic data item from the source system.|
+|[Surname]|Demographic data item from the source system.|
+|[Firstname]|Demographic data item from the source system.|
+|[DateOfBirth]|Demographic data item from the source system.|
+|[Gender]|Demographic data item from the source system. Subject to data suitability checks|
+|[Postcode]|Demographic data item from the source system.|
+|[DateCreated]|Datetime record first created in WMPI.|
+|[DateLastUpdated]|Datetime record last updated in WMPI.|
+|[DateLastMatched]|Datetime record was last involved in a match.|
+|[Deleted]|Deleted flag – 1 = Deleted / 0 = Active.|
+|[DateLastDBSTraced]|Datetime the record was last DBS traced. Note: depending on the record’s update history, this may not be using the demographics currently given in [core].[WMPI].|
+
+**[core].[SystemIdentifier]**
+|Column Name|Description|
+|--|--|
+|[AssignedKeyID]|Patient record’s unique ID within WMPI.|
+|[NativeSystem]|Local lookup ID for the native system in which the patient record belongs|
+|[SystemIdentifier]|Local Patient ID within the NativeSystem|
+|[Deleted]|Deleted flag – 1 = Deleted / 0 = Active|
+
+**[core].[AlternativeSystemIdentifer]**
+|Column Name|Description|
+|--|--|
+|[AssignedKeyID]|Patient record’s unique ID within WMPI.|
+|[AlternativeNativeSystem]|Local lookup ID for the native system in which the AlternativeSystemID belongs. |
+|[AlternativeSystemIdentifer]|Local Patient ID within the AlternativeNativeSystem|
+|[DateCreated]|Datetime AlternativeSystemID first loaded into WMPI|
+|[DateDeleted]|Datetime AlternativeSystemID deleted|
+|[Deleted]|Deleted flag – 1 = Deleted / 0 = Active|
 
 #### Output
 
