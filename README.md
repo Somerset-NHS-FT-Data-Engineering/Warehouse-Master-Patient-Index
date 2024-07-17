@@ -138,9 +138,9 @@ These are the data items sourced directly from the source system.
 **[load].[AlternativeSystemID]**
 |Column Name|Description|
 |--|--|
-|[NativeSystem]|ID for the native system in which the patient record belongs. Referenced in ref.System|
+|[NativeSystem]|Local lookup ID for the native system in which the patient record belongs|
 |[SystemIdentifier]|Local Patient ID within the NativeSystem|
-|[AlternativeNativeSystem]|ID for the native system in which the AlternativeSystemID belongs. Referenced in ref.System|
+|[AlternativeNativeSystem]|Local lookup ID for the native system in which the AlternativeSystemID belongs.|
 |[AlternativeSystemIdentifier]|Alternative Local Patient ID within the AlternativeNativeSystem|
 
 #### Core
