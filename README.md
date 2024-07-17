@@ -193,6 +193,29 @@ These are the core WMPI tables that act as the single repository of patient reco
 
 #### Output
 
+![Output ER Diagram](WMPI_ER_Diagram_Output.png)
+
+**[match].[Results]**
+|Column Name|Description|
+|--|--|
+|[AssignedKeyID]|Patient record’s unique ID within WMPI.|
+|[NativeSystem]|Local lookup ID for the native system in which the patient record belongs.|
+|[Match_Status]|Matched flag – 1 = Matched / 0 = No Match. This will be 1 where a record has matched with at least one other record (either from another system or the same system).|
+|[Matched_AssignedKeyID]|The matched patient record’s unique ID within WMPI.|
+|[Matched_NativeSystem]|The local lookup ID for the native system in which the matched patient record belongs.|
+|[Name_Match]|Name match flag – Y = Surname AND Firstname match / N = Surname OR Firstname don’t match / I = Surname AND Firstname match not checked as indirect match.|
+|[Match_type]|This is the coded match outputs from the algorithm. E.g. 4,5,6 means that the two records are matched on the 4, 5 and 6 checks from the algorithm. Where an output is not recorded (e.g. 2 in this example) that means that the records do not match on this check. Within some checks, additional checks on DateOfBirth are completed. Where this is the case, these will be shown with an additional letter (a or e) to indicate whether the additional check has passed or not. ‘INDRT’ is recorded where the matching pair have been created as part of an indirect match.|
+|[Match_Confidence]|Text description of the match confidence. Either ‘Confident’ or ‘Unconfident’. This is based on the results in the Match_type column.|
+|[Matching_Record_Count]|Record count per system - records that have multiple matches, but each match is in a different system will be given a matching record count of 1|
+|[Duplicate_In_Native_System]|Duplicate flag – Y = matching records are within the same system / N = matching records are not within the same system|
+|[MatchKeyID]|For all matching groups of records, this is the minimum AssignedKeyID from the group.|
+|[DBS_NoMatch]|Flags matches with a 1 where the NHS Numbers for each record in the match returned from the Spine (via the DBS process) are different. i.e. not the same person.|
+|[DBS_ConfirmedMatch]|Flags matches with a 1 where the NHS Numbers for each record in the match returned from the Spine (via the DBS process) are the same. i.e. the same person.|
+|[DBS_Match_Status]|Adjusted [Match_Status] column to account for the matches where the DBS data indicates they are not the same person.|
+|[DBS_Matching_Record_Count]|Adjusted [Matching_Record_Count] column to account for the matches where the DBS data indicates they are not the same person.|
+|[DBS_MatchKeyID]|Adjusted [MatchKeyID] column to account for the matches where the DBS data indicates they are not the same person.|
+|[MatchedDatetime]|Datetime match was last found|
+
 ## License
 
 ## Acknowledgments
